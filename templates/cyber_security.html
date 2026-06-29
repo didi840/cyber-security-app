@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFYBUGSY Cyber Security Center</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            margin: 0;
+            padding: 40px;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        h1 { text-align: center; }
+        form { display: grid; gap: 12px; }
+        label { font-weight: bold; }
+        input, select {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+        }
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #38bdf8;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            background: #111827;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IFYBUGSY CYBER SECURITY CENTER</h1>
+        <form method="post">
+            <label>Employee Name</label>
+            <input type="text" name="name" required>
+
+            <label>Antivirus Installed</label>
+            <select name="antivirus">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>Firewall Enabled</label>
+            <select name="firewall">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>System Updated</label>
+            <select name="update">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>MFA Enabled</label>
+            <select name="mfa">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
+
+            <label>System Shared with Others</label>
+            <select name="computer">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+
+            <button type="submit">Scan Security</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Security Report</h2>
+            <p><strong>Employee:</strong> {{ result.employee }}</p>
+            <p><strong>Score:</strong> {{ result.score }}</p>
+            <p><strong>Threat Level:</strong> {{ result.threat_level }}</p>
+            <p><strong>Status:</strong> {{ result.status }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
