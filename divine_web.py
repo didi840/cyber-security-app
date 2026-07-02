@@ -1,7 +1,7 @@
-﻿from flask import Flask, render_template, request, url_for, make_response
+from flask import Flask, render_template, request, url_for, make_response
 import time
 
-app = Flask(__name__, static_folder="../static", static_url_path="/shared_static")
+app = Flask(__name__)
 
 
 def evaluate_score(system, update, brand, shared, fraud, hacking):
@@ -24,37 +24,32 @@ def threat_level(score):
 
 
 def build_report(system, update, brand, shared, fraud, hacking, score, level, rating, status):
-    lines = [
-        "DIVINE ASUOMA SYSTEM DICTATE REPORT",
-        "====================================",
-        f"System version 11: {system}",
-        f"System updated: {update}",
-        f"Brand: {brand}",
-        f"Shared system: {shared}",
-        f"Involved in fraud: {fraud}",
-        f"Previously hacked: {hacking}",
-        f"Score: {score}/60",
-        f"Threat level: {level}",
-        f"Rating: {rating}",
-        f"System status: {status}",
-        "====================================",
-    ]
-    if score >= 50:
-        lines.append("Your system is in very good condition.")
-    elif score >= 35:
-        lines.append("Your system is reasonably safe, but review the areas marked.")
-    else:
-        lines.append("Your system may be at risk. Please improve security settings.")
-    return "\n".join(lines)
+    return (
+        "DIVINE ASUOMA SYSTEM DICTATE REPORT\n"
+        "====================================\n"
+        f"System version 11: {system}\n"
+        f"System updated: {update}\n"
+        f"Brand: {brand}\n"
+        f"Shared system: {shared}\n"
+        f"Involved in fraud: {fraud}\n"
+        f"Previously hacked: {hacking}\n"
+        f"Score: {score}/60\n"
+        f"Threat level: {level}\n"
+        f"Rating: {rating}\n"
+        f"System status: {status}\n"
+        "====================================\n"
+        + (
+            "Your system is in very good condition.\n"
+            if score >= 50
+            else "Your system is reasonably safe, but review the areas marked.\n"
+            if score >= 35
+            else "Your system may be at risk. Please improve security settings.\n"
+        )
+    )
 
 
-@app.route("/")
-def home():
-    return render_template("home.html")
-
-
-@app.route("/scanner", methods=["GET", "POST"])
-def scanner():
+@app.route("/", methods=["GET", "POST"])
+def index():
     if request.method == "POST":
         system = request.form.get("system", "no")
         update = request.form.get("update", "no")
@@ -117,4 +112,4 @@ def download_report():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(debug=True)

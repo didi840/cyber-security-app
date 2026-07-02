@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='shared.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>My Website</h1>
+      <nav class="nav-links">
+        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        <a class="nav-link" href="{{ url_for('scanner') }}">Scanner</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/">Main Store</a>
+      </nav>
+    </header>
+    <div class="container">
+      <h1>Welcome to My Website</h1>
+      <p>This website now includes the Divine System Scanner, a simple security diagnostic tool that evaluates your system based on version, updates, sharing, fraud, and hacking history.</p>
+      <a class="btn" href="{{ url_for('scanner') }}">Open System Scanner</a>
+    </div>
+  </body>
+</html>

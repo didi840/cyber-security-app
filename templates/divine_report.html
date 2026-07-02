@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Divine Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='shared.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Divine System Report</h1>
+      <nav class="nav-links">
+        <a class="nav-link" href="{{ url_for('index') }}">Store Home</a>
+        <a class="nav-link" href="http://127.0.0.1:5001/">External Scanner</a>
+      </nav>
+    </header>
+    <main class="page">
+      <div class="report">
+        <h1>Divine System Dictate Report</h1>
+        <p>Your system scan is complete. Download the report or review the results below.</p>
+        <dl class="summary">
+          <dt>Score</dt><dd>{{ score }}/60</dd>
+          <dt>Threat level</dt><dd>{{ level }}</dd>
+          <dt>Rating</dt><dd>{{ rating }}</dd>
+          <dt>Status</dt><dd>{{ status }}</dd>
+          <dt>Brand</dt><dd>{{ brand }}</dd>
+          <dt>Shared</dt><dd>{{ shared }}</dd>
+          <dt>Fraud</dt><dd>{{ fraud }}</dd>
+          <dt>Hacked</dt><dd>{{ hacking }}</dd>
+        </dl>
+        <div class="report-box">{{ report_text }}</div>
+        <div class="actions">
+          <a class="button" href="{{ download_url }}">Download Report</a>
+          <a class="button" href="{{ url_for('scanner') }}">Run Again</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Divine System Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='shared.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Divine System Scanner</h1>
+      <nav class="nav-links">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="http://127.0.0.1:5000/">Main Store</a>
+      </nav>
+    </header>
+    <main class="page">
+      <div class="card">
+        <form method="post">
+          <label for="system">Is it an 11 version system?</label>
+          <select id="system" name="system" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+
+          <label for="update">Is your system updated?</label>
+          <select id="update" name="update" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+
+          <label for="brand">Brand of the system</label>
+          <select id="brand" name="brand" required>
+            <option value="macbook">Macbook</option>
+            <option value="windows">Windows</option>
+          </select>
+
+          <label for="shared">Is your system shared with other users?</label>
+          <select id="shared" name="shared" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+
+          <label for="fraud">Has your system been used in a fraudulent act?</label>
+          <select id="fraud" name="fraud" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+
+          <label for="hacking">Have you ever been hacked before?</label>
+          <select id="hacking" name="hacking" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+
+          <button type="submit">Run Scanner</button>
+        </form>
+      </div>
+      <div class="footer">
+        <a href="/">Back to home</a>
+      </div>
+    </main>
+  </body>
+</html>
